@@ -15,8 +15,8 @@ var shuffledDeck = shuffle(deck);
 
 var cards = document.querySelectorAll('.deck li');
 
-for (card in cards) {
-    card.firstElementChild.className = shuffledDeck[i];
+for (i = 0; i < cards.length; i++) {
+    cards[i].firstElementChild.className = shuffledDeck[i];
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
