@@ -11,6 +11,14 @@ var deck = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt"
  *   - add each card's HTML to the page
  */
 
+var shuffledDeck = shuffle(deck);
+
+var cards = document.querySelectorAll('.deck li');
+
+for (card in cards) {
+    card.firstElementChild.className = shuffledDeck[i];
+}
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
