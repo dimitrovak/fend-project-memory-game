@@ -6,6 +6,9 @@ var deck = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt"
 var openCards = [];
 var matchingCards = [];
 
+var moveCountPanel = document.querySelector('.moves');
+var counter = 0;
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -52,6 +55,7 @@ var deckContainer = document.querySelector('.deck');
 deckContainer.addEventListener('click', function (event) {
     displaySymbol(event);
     addToOpen(event);
+    countMoves();
 })
 
 function displaySymbol(event) {
@@ -94,4 +98,9 @@ function clearList(array) {
         array.pop();
     }
     return array;;
+}
+
+function countMoves() {
+    counter++;
+    moveCountPanel.innerHTML = counter;
 }
