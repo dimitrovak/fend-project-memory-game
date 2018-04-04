@@ -75,6 +75,7 @@ function checkPositiveMatch(array) {
         array[0].parentNode.className = 'card match show';
         array[1].parentNode.className = 'card match show';
         matchingCards.push(array[0]);
+        clearList(array);
     }
 }
 
@@ -83,10 +84,14 @@ function checkNegativeMatch(array) {
         setTimeout(function () {
             array[0].parentNode.className = 'card';
             array[1].parentNode.className = 'card';
-            while (array.length !== 0) {
-                array.pop();
-            }
-            return array;;
+            clearList(array);
         }, 200);
     }
+}
+
+function clearList(array) {
+    while (array.length !== 0) {
+        array.pop();
+    }
+    return array;;
 }
