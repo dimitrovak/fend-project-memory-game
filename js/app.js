@@ -3,6 +3,7 @@
  */
 var deck = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb", "fa fa-leaf", "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane-o", "fa fa-cube"];
 
+var openCards = [];
 
 /*
  * Display the cards on the page
@@ -49,8 +50,14 @@ function shuffle(array) {
 var deckContainer = document.querySelector('.deck');
 deckContainer.addEventListener('click', function (event) {
     displaySymbol(event);
+    addToOpen(event);
 })
 
 function displaySymbol(event) {
     event.target.classList.add('open', 'show');
+}
+
+function addToOpen(event) {
+    openCards.push(event.target.firstElementChild);
+    checkMatch(openCards);
 }
