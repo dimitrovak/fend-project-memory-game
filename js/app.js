@@ -4,6 +4,7 @@
 var deck = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb", "fa fa-leaf", "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane-o", "fa fa-cube"];
 
 var openCards = [];
+var matchingCards = [];
 
 /*
  * Display the cards on the page
@@ -60,4 +61,32 @@ function displaySymbol(event) {
 function addToOpen(event) {
     openCards.push(event.target.firstElementChild);
     checkMatch(openCards);
+}
+
+function checkMatch(array) {
+    if (array.length === 2) {
+        checkPositiveMatch(array);
+        checkNegativeMatch(array);
+    }
+}
+
+function checkPositiveMatch(array) {
+    if (array[0].className === array[1].className) {
+        array[0].parentNode.className = 'card match show';
+        array[1].parentNode.className = 'card match show';
+        matchingCards.push(array[0]);
+    }
+}
+
+function checkNegativeMatch(array) {
+    if (array[0].className !== array[1].className) {
+        setTimeout(function () {
+            array[0].parentNode.className = 'card';
+            array[1].parentNode.className = 'card';
+            while (array.length !== 0) {
+                array.pop();
+            }
+            return array;;
+        }, 200);
+    }
 }
