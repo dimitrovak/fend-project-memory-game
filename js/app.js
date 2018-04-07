@@ -9,7 +9,10 @@ var matchingCards = [];
 var moveCountPanel = document.querySelector('.moves');
 var counter = 0;
 
-
+var timerPanel = document.querySelector('.timer');
+var minutes = 0;
+var seconds = 0;
+var timerOn = true;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -100,4 +103,25 @@ function clearList(array) {
 function countMoves() {
     counter++;
     moveCountPanel.innerHTML = counter;
+    if (counter == 1) {
+        timerStart();
+    }
+}
+
+function timer() {
+    if (timerOn) {
+        seconds++;
+        if (seconds === 60) {
+            minutes++;
+            seconds = 0;
+        }
+    } else {
+        seconds = 0;
+        minutes = 0;
+    }
+    timerPanel.innerHTML = 'Time ' + minutes + ' min' + ' : ' + seconds + ' sec';
+}
+
+function timerStart() {
+    setInterval('timer()', 1000);
 }
