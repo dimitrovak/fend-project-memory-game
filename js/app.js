@@ -9,6 +9,7 @@ var matchingCards = [];
 var moveCountPanel = document.querySelector('.moves');
 var counter = 0;
 
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -53,9 +54,11 @@ function shuffle(array) {
  */
 var deckContainer = document.querySelector('.deck');
 deckContainer.addEventListener('click', function (event) {
-    displaySymbol(event);
-    addToOpen(event);
-    countMoves();
+    if (!(event.target.className === 'deck')) {
+        displaySymbol(event);
+        addToOpen(event);
+        countMoves();
+    }
 })
 
 function displaySymbol(event) {
@@ -64,18 +67,12 @@ function displaySymbol(event) {
 
 function addToOpen(event) {
     openCards.push(event.target.firstElementChild);
-    checkMatch(openCards);
-}
-
-function checkMatch(array) {
-    if (array.length === 2) {
-        checkPositiveMatch(array);
-        checkNegativeMatch(array);
-    }
+    checkPositiveMatch(openCards);
+    checkNegativeMatch(openCards);
 }
 
 function checkPositiveMatch(array) {
-    if (array[0].className === array[1].className) {
+    if (array.length === 2 && array[0].className === array[1].className) {
         array[0].parentNode.className = 'card match show';
         array[1].parentNode.className = 'card match show';
         matchingCards.push(array[0]);
@@ -84,7 +81,7 @@ function checkPositiveMatch(array) {
 }
 
 function checkNegativeMatch(array) {
-    if (array[0].className !== array[1].className) {
+    if (array.length === 2 && array[0].className !== array[1].className) {
         setTimeout(function () {
             array[0].parentNode.className = 'card';
             array[1].parentNode.className = 'card';
