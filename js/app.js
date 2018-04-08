@@ -56,8 +56,9 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 var deckContainer = document.querySelector('.deck');
+
 deckContainer.addEventListener('click', function (event) {
-    if (!(event.target.className === 'deck')) {
+    if (!(event.target.className === 'deck') && !(event.target.localName === "i")) {
         displaySymbol(event);
         addToOpen(event);
         countMoves();
