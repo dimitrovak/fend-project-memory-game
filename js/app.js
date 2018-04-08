@@ -13,6 +13,8 @@ var timerPanel = document.querySelector('.timer');
 var minutes = 0;
 var seconds = 0;
 var timerOn = true;
+
+var starsPanel = document.querySelector('.stars');
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -62,6 +64,7 @@ deckContainer.addEventListener('click', function (event) {
         displaySymbol(event);
         addToOpen(event);
         countMoves();
+        starsScore();
     }
 })
 
@@ -125,4 +128,13 @@ function timer() {
 
 function timerStart() {
     setInterval('timer()', 1000);
+}
+
+function starsScore() {
+    if (counter === 16) {
+        starsPanel.lastElementChild.style.visibility = "hidden";
+    }
+    if (counter === 32) {
+        starsPanel.lastElementChild.previousElementSibling.style.visibility = 'hidden';
+    }
 }
