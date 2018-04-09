@@ -64,7 +64,7 @@ function shuffle(array) {
 var deckContainer = document.querySelector('.deck');
 
 deckContainer.addEventListener('click', function (event) {
-    if (!(event.target.className === 'deck') && !(event.target.localName === "i") && (event.target.classList.contains('open') === false)) {
+    if (!(event.target.className === 'deck') && !(event.target.localName === "i") && (event.target.classList.contains('open') === false) && (event.target.classList.contains("match") === false)) {
         displaySymbol(event);
         addToOpen(event);
         countMoves();
