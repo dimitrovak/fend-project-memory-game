@@ -166,3 +166,7 @@ function restartGame() {
     resetMoves();
     shuffleDeck();
 }
+
+function showModal() {
+    $('#congratsModal').modal('show');
+}
