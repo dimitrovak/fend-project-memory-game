@@ -5,6 +5,7 @@ var deck = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt"
 
 var openCards = [];
 var matchingCards = [];
+var cards = document.querySelectorAll('.deck li');
 
 var moveCountPanel = document.querySelector('.moves');
 var counter = 0;
@@ -13,8 +14,10 @@ var timerPanel = document.querySelector('.timer');
 var minutes = 0;
 var seconds = 0;
 var timerOn = true;
-
 var starsPanel = document.querySelector('.stars');
+var stars = starsPanel.querySelectorAll('li');
+
+var restartButton = document.querySelector('.restart');
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -22,13 +25,13 @@ var starsPanel = document.querySelector('.stars');
  *   - add each card's HTML to the page
  */
 
-var shuffledDeck = shuffle(deck);
-
-var cards = document.querySelectorAll('.deck li');
-
-for (i = 0; i < cards.length; i++) {
-    cards[i].firstElementChild.className = shuffledDeck[i];
+function shuffleDeck() {
+    var shuffledDeck = shuffle(deck);
+    for (i = 0; i < cards.length; i++) {
+        cards[i].firstElementChild.className = shuffledDeck[i];
+    }
 }
+shuffleDeck();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -65,6 +68,9 @@ deckContainer.addEventListener('click', function (event) {
         addToOpen(event);
         countMoves();
         starsScore();
+        if (timerOn === false) {
+            timerOn = true;
+        }
     }
 })
 
@@ -107,9 +113,14 @@ function clearList(array) {
 function countMoves() {
     counter++;
     moveCountPanel.innerHTML = counter;
-    if (counter == 1) {
+    if (counter == 1 && timerOn == true) {
         timerStart();
     }
+}
+
+function resetMoves() {
+    counter = 0;
+    moveCountPanel.textContent = counter;
 }
 
 function timer() {
@@ -137,4 +148,21 @@ function starsScore() {
     if (counter === 32) {
         starsPanel.lastElementChild.previousElementSibling.style.visibility = 'hidden';
     }
+}
+
+restartButton.addEventListener('click', restartGame)
+
+function restartGame() {
+    timerOn = false;
+    timer();
+    for (card of cards) {
+        card.className = 'card';
+    }
+    for (star of stars) {
+        star.style.visibility = 'visible'
+    }
+    openCards = [];
+    matchingCards = [];
+    resetMoves();
+    shuffleDeck();
 }
