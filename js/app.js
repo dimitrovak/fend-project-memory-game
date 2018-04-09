@@ -136,7 +136,7 @@ function timer() {
         seconds = 0;
         minutes = 0;
     }
-    timerPanel.innerHTML = 'Time ' + minutes + ' min' + ' : ' + seconds + ' sec';
+    timerPanel.innerHTML = 'Time: ' + minutes + ' min' + ' : ' + seconds + ' sec';
 }
 
 function timerStart() {
