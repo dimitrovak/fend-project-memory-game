@@ -16,6 +16,7 @@ var seconds = 0;
 var timerOn = true;
 var starsPanel = document.querySelector('.stars');
 var stars = starsPanel.querySelectorAll('li');
+var starCount = 3;
 
 var restartButton = document.querySelector('.restart');
 /*
@@ -71,6 +72,7 @@ deckContainer.addEventListener('click', function (event) {
         if (timerOn === false) {
             timerOn = true;
         }
+        endGame();
     }
 })
 
@@ -144,9 +146,11 @@ function timerStart() {
 function starsScore() {
     if (counter === 16) {
         starsPanel.lastElementChild.style.visibility = "hidden";
+        starCount--;
     }
     if (counter === 32) {
         starsPanel.lastElementChild.previousElementSibling.style.visibility = 'hidden';
+        starCount--;
     }
 }
 
@@ -169,4 +173,15 @@ function restartGame() {
 
 function showModal() {
     $('#congratsModal').modal('show');
+}
+
+function endGame() {
+    if (matchingCards.length === 8) {
+        showModal();
+        document.querySelector('.modal-body').textContent = "You managed to match all cards for " + minutes + " minutes and " + seconds + " seconds with a star score of " + starCount + " !";
+    }
+    document.getElementById('restartGame').addEventListener('click', function () {
+        $('#congratsModal').modal('hide');
+        restartGame();
+    });
 }
