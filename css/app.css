@@ -17,7 +17,7 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png');
+    background: #ffffff url('../img/darkness.png');
     /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
@@ -70,7 +70,8 @@ h1 {
 
 .deck .card.open {
     transform: rotateY(0);
-    background: #02b3e4;
+    background: black;
+    color: #9874BB;
     cursor: default;
 }
 
@@ -80,7 +81,8 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: black;
+    color: #02ccba;
     font-size: 33px;
 }
 
@@ -89,6 +91,8 @@ h1 {
  */
 
 .score-panel {
+    color: #A77FCD;
+    font-size: 1.3em;
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
@@ -97,19 +101,30 @@ h1 {
 .score-panel .stars {
     margin: 0;
     padding: 0;
-    display: inline-block;
     margin: 0 5px 0 0;
 }
 
 .score-panel .stars li {
+    color: #02ccba;
     list-style: none;
     display: inline-block;
 }
 
 .score-panel .restart {
+    color: #02ccba;
     float: right;
     cursor: pointer;
 }
+
+.moves {
+    color: #02ccba;
+}
+
+/*
+.timer {
+    color: #02ccba;
+}
+*/
 
 #restartGame {
     background-color: #02ccba;
@@ -124,4 +139,14 @@ h1 {
 .modal-body {
     text-align: center;
     font-size: 1.5em;
+}
+
+.restart {
+    margin-top: -70px;
+    font-size: 1.2em;
+}
+
+#title {
+    color: #A77FCD;
+    margin-bottom: 20px;
 }
