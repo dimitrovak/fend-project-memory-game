@@ -151,18 +151,18 @@ h1 {
     margin-bottom: 20px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 375px) {
     .deck {
         margin-top: 40px;
         max-width: 100%;
         width: 335px;
-        min-height: 350px;
+        min-height: 340px;
         padding: 10px;
     }
 
     .deck .card {
-        height: 67px;
-        width: 65px;
+        height: 64px;
+        width: 64px;
     }
 
     .deck .card.show {
@@ -181,6 +181,46 @@ h1 {
         margin-top: -88px;
         cursor: pointer;
     }
+    #title {
+        margin-top: 20px;
+        font-size: 2.8em;
+    }
+
+}
+
+@media screen and (min-width:376px)and (max-width: 425px) {
+    .deck {
+        margin-top: 30px;
+        max-width: 100%;
+        width: 390px;
+        height: 425px;
+        min-height: 350px;
+        padding: 10px;
+    }
+
+    .deck .card {
+        height: 80px;
+        width: 80px;
+    }
+
+    .deck .card.show {
+        line-height: 3.4;
+        font-size: 20px;
+    }
+
+    .score-panel {
+        text-align: left;
+        width: 280px;
+        margin-top: 20px;
+        font-size: 1.5em;
+    }
+
+    .restart {
+        float: right;
+        margin-top: -88px;
+        cursor: pointer;
+    }
+
     #title {
         margin-top: 20px;
         font-size: 2.8em;
