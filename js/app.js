@@ -88,10 +88,12 @@ function addToOpen(event) {
 
 function checkPositiveMatch(array) {
     if (array.length === 2 && array[0].className === array[1].className) {
-        array[0].parentNode.className = 'card match show';
-        array[1].parentNode.className = 'card match show';
-        matchingCards.push(array[0]);
-        clearList(array);
+        setTimeout(function () {
+            array[0].parentNode.className = 'card match show';
+            array[1].parentNode.className = 'card match show';
+            matchingCards.push(array[0]);
+            clearList(array);
+        }, 200);
     }
 }
 

@@ -80,6 +80,8 @@ h1 {
 }
 
 .deck .card.match {
+    transform: rotateY(360deg);
+    transition: width 2s, height 2s, transform 0.8s;
     cursor: default;
     background: black;
     color: #02ccba;
